@@ -54,7 +54,7 @@
 	for(var i = 0; i<bubblecolumns; i++){
 		bubbles[i] = [];
 		for(var j =0; j<bubblerows; j++){
-			bubbles[i][j] = { x:0, y:0, status:1};
+			bubbles[i][j] = { x:0, y:0, status:1, color:"green"};
 		}
 		
 	}
@@ -68,7 +68,7 @@
 					bubbles[i][j].y = bubbleY;
 					ctx.beginPath();
 					ctx.arc(bubbleX, bubbleY, 20, 0, Math.PI*2, false);
-					ctx.fillStyle = "#0095DD";
+					ctx.fillStyle = bubbles[i][j].color;
 					ctx.fill();
 					ctx.closePath();
 				}
