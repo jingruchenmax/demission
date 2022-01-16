@@ -17,24 +17,86 @@
 	var ctx = canvas.getContext("2d");
 	
 	var x = canvas.width/2;
-	var y = canvas.height-30;
+	var y = canvas.height-50;
 	//var dx = 2;
 	var dy = -2;
 	
+	
+	//Keyboard controls
+	var rightpressed = false;
+	var leftpressed = false;
+	
+	//Ship Dimensions
+	var xtop = canvas.width/2;
+	var ytop = canvas.height - 50;
+	
+	var xleft = xtop+25;
+	var yleft = ytop+25;
+	
+	var xright = xtop-25;
+	var yright = ytop+25;
+	
+	
 	function drawBullet() {
 		ctx.beginPath();
-		ctx.rect(x,y,10,60);
+		ctx.rect(x,y-40,3,15);
 		ctx.fillStyle = "#0095DD";
 		ctx.fill();
 		ctx.closePath();
 	
 	}
+	function drawShip(){
+		ctx.beginPath();
+		ctx.moveTo(xtop, ytop);
+		ctx.lineTo(xleft, yleft);
+		ctx.lineTo(xright, yright);
+		ctx.fillStyle = "#FFC0CB";
+		ctx.fill();
+	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
 	drawBullet();
+	drawShip();
 	//x+= dx;
 	y+= dy;
+	
+	if(rightPressed) {
+    xtop += 7;
+	xleft+= 7;
+	xright+= 7;
+		if (xright + 50 > canvas.width){
+			xright = canvas.width - 50;
+		}
 	}
+	else if(leftPressed) {
+    shipX -= 7;
+		if (shipX < 0){
+			shipX = 0;
+		}
+	}
+	
+	}
+	
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	
+	function keyDownHandler(e){
+		if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D"){
+			rightpressed = true;
+		}
+		else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A"){
+			leftpressed = true;
+		}
+	}
+	function keyUpHandler(e) {
+    	if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D") {
+	        rightPressed = false;
+	    }
+	    else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A") {
+	        leftPressed = false;
+   		}
+	}
+
 	setInterval(draw, 10);
 	
 	
