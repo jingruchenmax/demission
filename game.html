@@ -42,8 +42,41 @@
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
 	
-	//test
+	//Bubbles
 	
+	var bubblerows = 3;
+	var bubblecolumns = 5;
+	var bubblepadding = 20;
+	var bubbleoffsettop = 30;
+	var bubbleoffsetleft = canvas.width/3;
+	
+	var bubbles = [];
+	for(var i = 0; i<bubblecolumns; i++){
+		bubbles[i] = [];
+		for(var j =0; j<bubblerows; j++){
+			bubbles[i][j] = { x:0, y:0, status:1};
+		}
+		
+	}
+	function drawBubbles(){
+		for(var i = 0; i<bubblecolumns; i++){
+			for(var j = 0; j<bubblerows; j++){
+				if(bubbles[i][j].status == 1){
+					var bubbleX = (i*(20+bubblepadding))+bubbleoffsetleft;
+					var bubbleY = (j*(20+bubblepadding))+bubbleoffsettop;
+					bubbles[i][j].x = bubbleX;
+					bubbles[i][j].y = bubbleY;
+					ctx.beginPath();
+					ctx.arc(bubbleX, bubbleY, 20, 0, Math.PI*2, false);
+					ctx.fillStyle = "#0095DD";
+					ctx.fill();
+					ctx.closePath();
+				}
+				
+			}
+		}
+			
+	}
 	function drawBullet() {
 		if(fire == true && fired == false){
 		
@@ -103,8 +136,29 @@
 		
 		}*/
 	}
+	function collisionDetection(){
+		for(var i = 0; i<bubblecolumns; i++){
+			for(var j=0; j<bubblerows; j++){
+				var b = bubbles[i][j];
+				
+				if(b.status == 1){
+					
+					if(x > b.x && x < b.x + 20 && y > b.y && y < b.y + 20){
+						console.log("Reached");
+						fire = false;
+						fired = false;
+						b.status = 0;
+					}
+				}
+				
+				
+			}
+		}
+			
+	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
+	drawBubbles();
 	drawBullet();
 	if(fire){
 		ctx.beginPath();
@@ -116,6 +170,7 @@
 	}
 			
 	drawShip();
+	collisionDetection();
 	//x+= dx;
 	
 	
