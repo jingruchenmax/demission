@@ -1,7 +1,7 @@
 .page--login {
     height: 100%;
-    background: rgb(0, 194, 255);
-    background: linear-gradient(31deg,rgb(0, 160, 209)0%,rgb(83, 212, 156)35%,rgb(64, 211, 174)50%,rgb(0, 173, 207)100%); 
+    background: rgb(0, 158, 206);
+    background: linear-gradient(31deg,rgb(12, 111, 141)0%,rgb(32, 112, 45)35%,rgb(24, 99, 42)50%,rgb(34, 169, 179)100%); 
 
 }
   .login {
@@ -16,12 +16,13 @@
       width: 100%;
       text-align: center;
       color: #ffffff;
-      font-weight: 300;
-      font-size: 3.4rem;
-      margin-bottom: 40px;
+      font-weight: 1000000;
+      font-size: 5.4rem;
+      margin-bottom: 10px;
       padding: 0px; }
     .login__text {
       width: 70%;
+      font-size: 2.0rem;
       text-align: center;
       color: #fff;
       margin: 0 auto 40px auto;
@@ -49,11 +50,11 @@
     .login-form__input {
       width: calc(100% - 20px);
       border: none;
-      background-color: #3cddd5;
+      background-color: #7cb861;
       padding: 15px 10px;
       border-radius: 10px;
       color: #fff; 
-      box-shadow: 0px 0px 10px rgba(113, 97, 172, 0.5) inset;
+      box-shadow: 0px 0px 8px rgba(39, 32, 65, 0.7) inset;
     }
       
     .login-form__submit {
@@ -91,19 +92,19 @@
               text-align: center;
               padding: 20px 0; }
             .button--main {
-              background-color: #00aeff !important;
-              background: linear-gradient(60deg, #74d3ff 0%, #1bccb4 100%) !important;
+              background-color: #0c1b22 !important;
+              background: linear-gradient(60deg, #2bc538 0%, #0fb89b 100%) !important;
               color: rgb(255, 255, 255); 
               box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.5);
             }
             .button--blue {
-              background-color: #0b83c9;
+              background-color: #4caf72;
               color: #fff; 
               box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.8);
             }
             .button--disabled {
               background-color: #292467;
-              color: #37dada;
+              color: #509178;
               opacity: 0.5;
               cursor: default !important; }
 
@@ -150,3 +151,5 @@ h5 {font-size: 1.2rem; }
       
 h6 {font-size: 1.1rem; }
                     
+  
+  
