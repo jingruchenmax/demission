@@ -37,6 +37,25 @@
 	var yright = ytop+25;
 	
 	
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	function keyDownHandler(e){
+		if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D"){
+			rightpressed = true;
+		}
+		else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A"){
+			leftpressed = true;
+		}
+	}
+	function keyUpHandler(e) {
+    	if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D") {
+	        rightpressed = false;
+	    }
+	    else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A") {
+	        leftpressed = false;
+   		}
+	}
+	
 	function drawBullet() {
 		ctx.beginPath();
 		ctx.rect(x,y-40,3,15);
@@ -60,43 +79,33 @@
 	//x+= dx;
 	y+= dy;
 	
-	if(rightPressed) {
-    xtop += 7;
+	if(rightpressed) {
+    xtop+= 7;
 	xleft+= 7;
 	xright+= 7;
 		if (xright + 50 > canvas.width){
-			xright = canvas.width - 50;
+			xleft = canvas.width - 75;
+			xright = canvas.width - 25;
+			xtop = (xleft + xright)/2;
+			
 		}
 	}
-	else if(leftPressed) {
-    shipX -= 7;
-		if (shipX < 0){
-			shipX = 0;
+	else if(leftpressed) {
+    xleft-= 7;
+	xright-= 7;
+	xtop-= 7;
+		if (xleft - 25 < 0){
+			xleft = 0 + 25;
+			xright = 0 + 75;
+			xtop = 0 + (xleft + xright)/2;
 		}
 	}
 	
 	}
 	
-	document.addEventListener("keydown", keyDownHandler, false);
-	document.addEventListener("keyup", keyUpHandler, false);
 	
-	function keyDownHandler(e){
-		if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D"){
-			rightpressed = true;
-		}
-		else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A"){
-			leftpressed = true;
-		}
-	}
-	function keyUpHandler(e) {
-    	if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D") {
-	        rightPressed = false;
-	    }
-	    else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A") {
-	        leftPressed = false;
-   		}
-	}
-
+	
+	
 	setInterval(draw, 10);
 	
 	
