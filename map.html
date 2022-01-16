@@ -10,12 +10,22 @@
     <div id="map"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
+    <!-- <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY2vSubqGorpSTRD8_vRkVgD5lzV6xRV8&callback=initMap&v=weekly"
       async
-    ></script>
+    ></script> -->
 
-    <div id="inputBar">
-    <button onclick="routeVisual()">Click Me!</button></div>
+    <div class="login-form__row">
+      <label class="login-form__label">Username</label>
+      <input type="text" name="Username" value="" class="login-form__input required" />
+    </div>
+    <div class="login-form__row">
+      <label class="login-form__label">Password</label>
+      <input type="password" name="password" value="" class="login-form__input required" />
+    </div>
+    <div class="login-form__row">
+      <input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="SIGN IN" />
+    </div>
+
   </body>
 </html>
