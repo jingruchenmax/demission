@@ -36,32 +36,31 @@
 	var y = ytop;
 	var og_y = ytop;
 	//var dx = 2;
-	var dy = -2;
+	var dy = -10;
 	var fire = false;
-	
+	var fired = false;
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
 	
 	//test
 	
 	function drawBullet() {
-		if(fire){
+		if(fire == true && fired == false){
 		
-			ctx.beginPath();
-			ctx.rect(x,y-40,3,15);
-			ctx.fillStyle = "#0095DD";
-			ctx.fill();
-			ctx.closePath();
-			if(y+dy < 10){
-				fire = false;
-				y = og_y;
-				x = xtop;
-			}
-			else{
-				y+=dy;
-			}
 			
-			
+			fired = true;
+					
+		}
+		if(fire && fired){
+			y+=dy;
+		}
+		if(y+dy < 10){
+			fire = false;
+			fired = false;
+		}
+		if(fire == false && fired == false){	
+			y = og_y;
+			x = xtop;
 		}
 		
 	}
@@ -85,6 +84,7 @@
 		}
 		else if(e.key == "Space" || e.key == " "){
 			fire = true;
+			
 		
 		}
 	}
@@ -106,6 +106,15 @@
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
 	drawBullet();
+	if(fire){
+		ctx.beginPath();
+		ctx.rect(x,y-40,3,15);
+		ctx.fillStyle = "#0095DD";
+		ctx.fill();
+		ctx.closePath();
+	
+	}
+			
 	drawShip();
 	//x+= dx;
 	
