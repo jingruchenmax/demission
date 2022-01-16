@@ -1,8 +1,6 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-    #map {
-        flex-basis: 0;
-        flex-grow: 4;
+       #map {
         height: 100%;
       }
       
@@ -13,17 +11,25 @@
         margin: 0;
         padding: 0;
       }
-
-
-      #overlay{
-        position: absolute;
-        top: 70%;
-        left: 10%;
-        right:10%;
-        width: 80%;
-        z-index: 10;
+      
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
       }
-
+      
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+      
+      #infowindow-content {
+        display: none;
+      }
+      
+      #map #infowindow-content {
+        display: inline;
+      }
+      
       .pac-card {
         background-color: #fff;
         border: 0;
@@ -67,27 +73,11 @@
       #pac-input:focus {
         border-color: #4d90fe;
       }
-
-      #floating-panel {
-        position: absolute;
-        top: 70%;
-        
-        width: 60%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: Roboto, Arial, sans-serif;
-        line-height: 30px;
-        padding-left: 10px;
+      
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
       }
-
-      .input__text {
-        width: 80%;
-        font-size: 1.0rem;
-        text-align: center;
-        color: rgb(0, 0, 0);
-        margin: 0 auto 40px auto;
-        line-height: 1.5; 
-        font-family: Roboto, Arial, sans-serif;}
