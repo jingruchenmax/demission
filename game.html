@@ -16,11 +16,6 @@
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 	
-	var x = canvas.width/2;
-	var y = canvas.height-50;
-	//var dx = 2;
-	var dy = -2;
-	
 	
 	//Keyboard controls
 	var rightpressed = false;
@@ -36,48 +31,84 @@
 	var xright = xtop-25;
 	var yright = ytop+25;
 	
+	//Bullet Positions
+	var x = xtop;
+	var y = ytop;
+	var og_y = ytop;
+	//var dx = 2;
+	var dy = -2;
+	var fire = false;
 	
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
+	
+	
+	
+	function drawBullet() {
+		if(fire){
+		
+			ctx.beginPath();
+			ctx.rect(x,y-40,3,15);
+			ctx.fillStyle = "#0095DD";
+			ctx.fill();
+			ctx.closePath();
+			if(y+dy < 10){
+				fire = false;
+				y = og_y;
+				x = xtop;
+			}
+			else{
+				y+=dy;
+			}
+			
+			
+		}
+		
+	}
+	function drawShip(){
+		
+			ctx.beginPath();
+			ctx.moveTo(xtop, ytop);
+			ctx.lineTo(xleft, yleft);
+			ctx.lineTo(xright, yright);
+			ctx.fillStyle = "#FFC0CB";
+			ctx.fill();
+				
+	}
 	function keyDownHandler(e){
 		if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D"){
 			rightpressed = true;
+			
 		}
 		else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A"){
 			leftpressed = true;
 		}
+		else if(e.key == "Space" || e.key == " "){
+			fire = true;
+		
+		}
 	}
+	
+	
 	function keyUpHandler(e) {
     	if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D") {
 	        rightpressed = false;
+			
 	    }
 	    else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A") {
 	        leftpressed = false;
    		}
-	}
-	
-	function drawBullet() {
-		ctx.beginPath();
-		ctx.rect(x,y-40,3,15);
-		ctx.fillStyle = "#0095DD";
-		ctx.fill();
-		ctx.closePath();
-	
-	}
-	function drawShip(){
-		ctx.beginPath();
-		ctx.moveTo(xtop, ytop);
-		ctx.lineTo(xleft, yleft);
-		ctx.lineTo(xright, yright);
-		ctx.fillStyle = "#FFC0CB";
-		ctx.fill();
+		/*else if(e.key == "Space" || e.key == " "){
+			fire = false;
+		
+		}*/
 	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
 	drawBullet();
 	drawShip();
 	//x+= dx;
-	y+= dy;
+	
 	
 	if(rightpressed) {
     xtop+= 7;
@@ -100,6 +131,8 @@
 			xtop = 0 + (xleft + xright)/2;
 		}
 	}
+	
+	
 	
 	}
 	
