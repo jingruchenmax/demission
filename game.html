@@ -21,13 +21,28 @@
 	//var dx = 2;
 	var dy = -2;
 	
+	
+	//Keyboard controls
+	var rightpressed = false;
+	var leftpressed = false;
+	
+	
+	
 	function drawBullet() {
 		ctx.beginPath();
-		ctx.rect(x,y,10,60);
+		ctx.rect(x,y,5,20);
 		ctx.fillStyle = "#0095DD";
 		ctx.fill();
 		ctx.closePath();
 	
+	}
+	function drawShip(){
+		ctx.beginPath();
+		ctx.moveTo(75, 50);
+		ctx.lineTo(100, 75);
+		ctx.lineTo(100, 25);
+		ctx.fillStyle = "#FFC0CB";
+		ctx.fill();
 	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -35,6 +50,27 @@
 	//x+= dx;
 	y+= dy;
 	}
+	
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+	
+	function keyDownHandler(e){
+		if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D"){
+			rightpressed = true;
+		}
+		else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A"){
+			leftpressed = true;
+		}
+	}
+	function keyUpHandler(e) {
+    	if(e.key == "Right" || e.key == "ArrowRight" || e.key == "D") {
+	        rightPressed = false;
+	    }
+	    else if(e.key == "Left" || e.key == "ArrowLeft" || e.key == "A") {
+	        leftPressed = false;
+   		}
+	}
+
 	setInterval(draw, 10);
 	
 	
