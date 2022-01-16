@@ -15,7 +15,18 @@
       async
     ></script>
 
-    <div id="inputBar">
-    <button onclick="routeVisual()">Click Me!</button></div>
+    <div id = "overlay">
+      <div class="login-form__row">
+        <label class="login-form__label">Start</label>
+        <input type="text" name="Username" value="" class="login-form__input required" />
+      </div>
+      <div class="login-form__row">
+        <label class="login-form__label">Destination</label>
+        <input type="password" name="password" value="" class="login-form__input required" />
+      </div>
+      <div class="login-form__row">
+        <input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="SIGN IN" />
+      </div>
+    </div>
   </body>
 </html>
