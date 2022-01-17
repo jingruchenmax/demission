@@ -39,6 +39,12 @@
 	var dy = -10;
 	var fire = false;
 	var fired = false;
+	
+	//Score
+	var score = 0;
+	var scoreXpos = canvas.width - 50;
+	var scoreYpos = 20;
+	
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
 	
@@ -59,13 +65,13 @@
 		bubbles[i] = [];
 		const shuffled = list.sort(() => Math.random() - 0.5);
 			if(shuffled[0] == "green"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:1, color:shuffled[0], text:"O2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:1, color:shuffled[0], text:"O2", points:-32};
 			}
 			else if(shuffled[0] == "red"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"CO2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"CO2", points:44};
 			}
 			else if(shuffled[0] == "yellow"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"SO2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"SO2", points:64};
 			}
 		
 	}
@@ -74,14 +80,17 @@
 			if(newcolor[0] == "green"){
 				bubbles[bubblecounter-1].color = newcolor[0];
 				bubbles[bubblecounter-1].text = "O2";
+				bubbles[bubblecounter-1].points = -32;
 			}
 			else if(newcolor[0] == "red"){
 				bubbles[bubblecounter-1].color = newcolor[0];
 				bubbles[bubblecounter-1].text = "CO2";
+				bubbles[bubblecounter-1].points = 44;
 			}
 			else if(newcolor[0] == "yellow"){
 				bubbles[bubblecounter-1].color = newcolor[0];
 				bubbles[bubblecounter-1].text = "SO2";
+				bubbles[bubblecounter-1].points = 64;
 			}
 	}
 	function drawBubbles(){
@@ -195,6 +204,7 @@
 						fire = false;
 						fired = false;
 						b.status = 0;
+						score+= b.points;
 					}
 				}
 				
@@ -205,8 +215,10 @@
 	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
-		
-
+	
+	ctx.font = '8pt Calibri';
+	ctx.fillStyle = 'black';	
+	ctx.fillText(score, scoreXpos, scoreYpos);
 	drawBubbles();
 	drawBullet();
 	if(fire){
