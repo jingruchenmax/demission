@@ -66,7 +66,7 @@ function calculateDistance(){
     var phones = gallons * 1081.0;
     document.getElementById("gallons").innerText = gallons.toFixed(2);
     document.getElementById("coal").innerText = coal.toFixed(2);
-    document.getElementById("phones").innerText = phones.toFixed(2);
+    document.getElementById("phones").innerText = phones.toFixed(0);
   });
 
 }
