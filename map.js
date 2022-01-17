@@ -12,15 +12,20 @@ function initMap() {
   directionsRenderer.setMap(map);
   const onChangeHandler = function () {
     calculateAndDisplayRoute(directionsService, directionsRenderer);
+    calculateDistance();
   };
   document.getElementById("submit").addEventListener("click", onChangeHandler);
 
   const card = document.getElementById("pac-card");
-  const start = document.getElementById("start");
-  const end = document.getElementById("end");
+  var start = document.getElementById("start");
+  var end = document.getElementById("end");
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
   new google.maps.places.Autocomplete(start);
   new google.maps.places.Autocomplete(end);
+
+
+
+
 }
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
@@ -38,4 +43,22 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
       directionsRenderer.setDirections(response);
     })
     .catch((e) => window.alert("Directions request failed due to " + status));
+}
+
+function calculateDistance(){
+  const request = {
+    origins: [document.getElementById("start").value],
+    destinations: [document.getElementById("end").value],
+    travelMode: google.maps.TravelMode.DRIVING,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: false,
+  };
+
+  service.getDistanceMatrix(request).then((response) => {  
+
+    document.getElementById("response").innerText += response.rows[0].elements[0].distance.text;
+  });
+
+  window.open("emission.html");
 }
