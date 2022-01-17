@@ -2,11 +2,12 @@
        * element that contains the map. */
 
 /* Optional: Makes the sample page fill the window. */
-html, body, #map {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0px;
-  padding: 0px
+  padding: 0px;
+  overflow: hidden;
 }
 
 #description {
@@ -68,23 +69,32 @@ html, body, #map {
   padding: 6px 12px;
 }
 
+#map {
+  position: absolute;
+  left: 0%;
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+}
+
+hr {
+  margin: 15px;
+  color: white;
+}
+
 #floating-panel {
-  margin: auto;
+  display: inline-block;
+  position: absolute;
+  padding-top: 5%;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  position: fixed;
-  bottom: -2%;
-  left: 15%;
-  min-width: 600px;
-  width: 70%;
+  right: 0%;
+  width: 30%;
+  height: 100%;
   z-index: 5;
   background-color: rgb(255, 255, 255);
   background: linear-gradient(60deg, #78b47a 0%, #439177 100%);
-  padding: 5px;
-  padding-top: 2%;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px -8px 8px rgba(0, 0, 0, 0.8);
   text-align: center;
   font-family: Roboto, Arial, sans-serif;
   line-height: 30px;
@@ -116,9 +126,9 @@ html, body, #map {
   padding: 8px;
   width: 80%;
   border-radius: 8px;
-  margin: auto;
+  /* margin: auto; */
   font-size: 1.0rem;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   background-color: #fff;
   box-shadow: 0px 0px 5px rgba(53, 43, 77, 1);
   border: none;

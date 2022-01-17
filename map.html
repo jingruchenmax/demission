@@ -3,8 +3,8 @@
   <head>
     <title>Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="map.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./map.js"></script>
   </head>
   <body>
     <div id="map"></div>
@@ -16,12 +16,16 @@
     ></script>
 
     <div id="floating-panel">
-      <!-- <h3 class="floating-panel-title">Where do you want to go?</h3> -->
       <input class = "input__text" id="start" type="text" placeholder="Enter a start location" />
       <input class = "input__text" id="end" type="text" placeholder="Enter a end location" />
       <input type="submit" name="button" class="bottom-buttons" id="submit" value="GO" />
-      <p>
-      </p>
+      <br/>
+      <hr>
+      <br/>
+      <div id="reponse" hidden>
+        <b>Did you know? 😕</b>
+
+      </div>
     </div>
      
   </body>
