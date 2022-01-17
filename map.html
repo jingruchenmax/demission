@@ -3,18 +3,19 @@
   <head>
     <title>Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="./map.js"></script>
   </head>
   <body>
     <div id="map"></div>
-
+    
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY2vSubqGorpSTRD8_vRkVgD5lzV6xRV8&callback=initMap&libraries=places"
-      async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY2vSubqGorpSTRD8_vRkVgD5lzV6xRV8&callback=initMap&libraries=places"
+    async
     ></script>
-
+    
     <div id="floating-panel">
       <input class = "input__text" id="start" type="text" placeholder="Enter a start location" />
       <input class = "input__text" id="end" type="text" placeholder="Enter a end location" />
@@ -22,11 +23,16 @@
       <br/>
       <hr>
       <br/>
-      <div id="reponse" hidden>
+      <div id="response" class="hidden">
         <b>Did you know? 😕</b>
-
+        <p>If you share this trip with 1 more person, you could reduce environmental resource usage by...</p>
+        <p>⛽<br/><b id="gallons"></b> gallons of gas</p>
+        <p>☁️<br/>CO2 emissions equivalent to <b id="coal"></b> lbs of coal</p>
+        <p>📱<br/>This is enough energy to recharge <b id="phones"></b> smartphones</p>
+        <i>Learn more at 
+        <a href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references">epa.gov</a>
+        </i>
       </div>
     </div>
-     
   </body>
 </html>

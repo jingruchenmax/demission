@@ -11,6 +11,7 @@ function initMap() {
   // *Render route
   directionsRenderer.setMap(map);
   const onChangeHandler = function () {
+    document.getElementById("response").setAttribute("class", "fadeIn")
     calculateAndDisplayRoute(directionsService, directionsRenderer);
     calculateDistance();
   };
@@ -55,10 +56,17 @@ function calculateDistance(){
     avoidTolls: false,
   };
 
+  const service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(request).then((response) => {  
 
-    document.getElementById("response").innerText += response.rows[0].elements[0].distance.text;
+    var mpg = 22.2222222 * 1609.344;
+    var d =  response.rows[0].elements[0].distance.value;
+    var gallons = d / mpg;
+    var coal = gallons * 9.8;
+    var phones = gallons * 1081.0;
+    document.getElementById("gallons").innerText = gallons.toFixed(2);
+    document.getElementById("coal").innerText = coal.toFixed(2);
+    document.getElementById("phones").innerText = phones.toFixed(2);
   });
 
-  window.open("emission.html");
 }
