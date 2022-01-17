@@ -10,12 +10,14 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="480" height="320" ></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
-	
+	canvas.style.background = "#5c94fc";
+	//ctx.fillStyle = "#5c94fc";
+	//ctx.fillRect(0,0,canvas.width,canvas.height);
 	
 	//Keyboard controls
 	var rightpressed = false;
@@ -50,7 +52,6 @@
 	
 	//Bubbles
 	
-	//var bubblerows = 3;
 	var bubblecolumns = 9;
 	var bubblepadding = 25;
 	var bubbleoffsettop = 30;
@@ -59,36 +60,49 @@
 	var bubbles = [];
 	var bubblecounter = 0;
 	
+	//Images
+	var greencircle = new Image();
+	greencircle.src = 'icons/green_circle.png';
+	var redcircle = new Image();
+	redcircle.src = 'icons/red_circle.png';
+	var yellowcircle = new Image();
+	yellowcircle.src = 'icons/yellow_circle.png';
+	function init() {
+		
+		
+		window.requestAnimationFrame(draw);
+	}
 	const list = ["green", "red", "yellow"];
 	
 	for(var i = 0; i<bubblecolumns; i++){
 		bubbles[i] = [];
 		const shuffled = list.sort(() => Math.random() - 0.5);
 			if(shuffled[0] == "green"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:1, color:shuffled[0], text:"O2", points:-32};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:1, color:greencircle, text:"O2", points:-32};
 			}
 			else if(shuffled[0] == "red"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"CO2", points:44};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:redcircle, text:"CO2", points:44};
 			}
 			else if(shuffled[0] == "yellow"){
-				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"SO2", points:64};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:yellowcircle, text:"SO2", points:64};
 			}
 		
 	}
+	
 	function colorChange(){
 		const newcolor = list.sort(() => Math.random() - 0.5);
 			if(newcolor[0] == "green"){
-				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].color = greencircle;
 				bubbles[bubblecounter-1].text = "O2";
 				bubbles[bubblecounter-1].points = -32;
 			}
 			else if(newcolor[0] == "red"){
-				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].color = redcircle;
 				bubbles[bubblecounter-1].text = "CO2";
 				bubbles[bubblecounter-1].points = 44;
 			}
 			else if(newcolor[0] == "yellow"){
-				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].color = yellowcircle;
 				bubbles[bubblecounter-1].text = "SO2";
 				bubbles[bubblecounter-1].points = 64;
 			}
@@ -98,16 +112,19 @@
 			var i = bubblecounter;
 				if(bubbles[i].status == 1){
 					
+					
+					//ctx.fillStyle = bubbles[i].color;
+					//ctx.arc(bubbles[i].x, bubbles[i].y-testleft, 20, 0, Math.PI*2, false);
+					//ctx.fill();
+					//console.log(greencircle);
 					ctx.beginPath();
-					ctx.fillStyle = bubbles[i].color;
-					ctx.arc(bubbles[i].x, bubbles[i].y-testleft, 20, 0, Math.PI*2, false);
-					ctx.fill();
+					ctx.drawImage(bubbles[i].color, bubbles[i].x, bubbles[i].y-testleft, 40, 40);
 					
 					ctx = canvas.getContext("2d");
 					ctx.font = '8pt Calibri';
 					ctx.fillStyle = 'black';
 					ctx.textAlign = 'center';
-					ctx.fillText(bubbles[i].text, bubbles[i].x, bubbles[i].y-testleft);
+					ctx.fillText(bubbles[i].text, bubbles[i].x + 20, bubbles[i].y-testleft + 20);
 					//ctx.fillText("Hello",bubbleX,bubbleY);
 					ctx.closePath();
 				}
@@ -199,7 +216,7 @@
 					
 					//if(x > b.x && x < b.x + 20 && y > b.y && y < b.y + 20){
 					//console.log(y, b.y);
-					if(x > b.x && x < b.x + 20 &&  y+testleft+20 < b.y &&y < b.y-testleft + 20 ){
+					if(x > b.x && x < b.x + 20 && y+testleft+40 < b.y && y < b.y-testleft + 40 ){
 						console.log("Reached");
 						fire = false;
 						fired = false;
@@ -224,7 +241,7 @@
 	if(fire){
 		ctx.beginPath();
 		ctx.rect(x,y-40,3,15);
-		ctx.fillStyle = "#0095DD";
+		ctx.fillStyle = "#FFC0CB";
 		ctx.fill();
 		ctx.closePath();
 	
@@ -268,6 +285,7 @@
 	
 
 </script>
+<div> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
 
 </body>
 </html>
