@@ -44,58 +44,83 @@
 	
 	//Bubbles
 	
-	var bubblerows = 3;
+	//var bubblerows = 3;
 	var bubblecolumns = 9;
 	var bubblepadding = 25;
 	var bubbleoffsettop = 30;
 	var bubbleoffsetleft = 60;
-	
+	var testleft = 0;
 	var bubbles = [];
+	var bubblecounter = 0;
 	
 	const list = ["green", "red", "yellow"];
 	
 	for(var i = 0; i<bubblecolumns; i++){
 		bubbles[i] = [];
-		for(var j =0; j<bubblerows; j++){
-			const shuffled = list.sort(() => Math.random() - 0.5)
+		const shuffled = list.sort(() => Math.random() - 0.5);
 			if(shuffled[0] == "green"){
-				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"O2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:1, color:shuffled[0], text:"O2"};
 			}
 			else if(shuffled[0] == "red"){
-				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"CO2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"CO2"};
 			}
 			else if(shuffled[0] == "yellow"){
-				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"SO2"};
+				bubbles[i] = { x:randomXVal(), y:canvas.height, status:0, color:shuffled[0], text:"SO2"};
 			}
-			
-		}
 		
 	}
+	function colorChange(){
+		const newcolor = list.sort(() => Math.random() - 0.5);
+			if(newcolor[0] == "green"){
+				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].text = "O2";
+			}
+			else if(newcolor[0] == "red"){
+				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].text = "CO2";
+			}
+			else if(newcolor[0] == "yellow"){
+				bubbles[bubblecounter-1].color = newcolor[0];
+				bubbles[bubblecounter-1].text = "SO2";
+			}
+	}
 	function drawBubbles(){
-		for(var i = 0; i<bubblecolumns; i++){
-			for(var j = 0; j<bubblerows; j++){
-				if(bubbles[i][j].status == 1){
-					var bubbleX = (i*(20+bubblepadding))+bubbleoffsetleft;
-					var bubbleY = (j*(20+bubblepadding))+bubbleoffsettop;
-					bubbles[i][j].x = bubbleX;
-					bubbles[i][j].y = bubbleY;
+		
+			var i = bubblecounter;
+				if(bubbles[i].status == 1){
+					
 					ctx.beginPath();
-					ctx.fillStyle = bubbles[i][j].color;
-					ctx.arc(bubbleX, bubbleY, 20, 0, Math.PI*2, false);
+					ctx.fillStyle = bubbles[i].color;
+					ctx.arc(bubbles[i].x, bubbles[i].y-testleft, 20, 0, Math.PI*2, false);
 					ctx.fill();
 					
 					ctx = canvas.getContext("2d");
 					ctx.font = '8pt Calibri';
 					ctx.fillStyle = 'black';
 					ctx.textAlign = 'center';
-					ctx.fillText(bubbles[i][j].text, bubbleX, bubbleY+5);
+					ctx.fillText(bubbles[i].text, bubbles[i].x, bubbles[i].y-testleft);
 					//ctx.fillText("Hello",bubbleX,bubbleY);
 					ctx.closePath();
 				}
-				
-			}
-		}
+				//bubblecounter+=1;
+				if(bubbles[i].y-testleft < 10 || bubbles[i].status == 0){
+					bubbles[i].status = 0;
+					bubblecounter+=1;
+					colorChange();
+					if(bubblecounter > 8){
+						bubblecounter = 0;
+					}
+					bubbles[bubblecounter].status = 1;
+					//bubbles[bubblecounter].y = canvas.height;
+					testleft = 0;
+				}
 			
+		//}
+			
+	}
+	function randomXVal(){
+		
+		return Math.random() * ((canvas.width-10) - 10) + 10;
 	}
 	function drawBullet() {
 		if(fire == true && fired == false){
@@ -158,12 +183,14 @@
 	}
 	function collisionDetection(){
 		for(var i = 0; i<bubblecolumns; i++){
-			for(var j=0; j<bubblerows; j++){
-				var b = bubbles[i][j];
+			
+				var b = bubbles[i];
 				
 				if(b.status == 1){
 					
-					if(x > b.x && x < b.x + 20 && y > b.y && y < b.y + 20){
+					//if(x > b.x && x < b.x + 20 && y > b.y && y < b.y + 20){
+					//console.log(y, b.y);
+					if(x > b.x && x < b.x + 20 &&  y+testleft+20 < b.y &&y < b.y-testleft + 20 ){
 						console.log("Reached");
 						fire = false;
 						fired = false;
@@ -172,12 +199,14 @@
 				}
 				
 				
-			}
+			
 		}
 			
 	}
 	function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
+		
+
 	drawBubbles();
 	drawBullet();
 	if(fire){
@@ -188,11 +217,10 @@
 		ctx.closePath();
 	
 	}
-			
-	drawShip();
+	drawShip();		
 	collisionDetection();
 	//x+= dx;
-	
+	testleft+=1;
 	
 	if(rightpressed) {
     xtop+= 7;
