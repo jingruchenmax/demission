@@ -1,169 +1,218 @@
-.page--login {
-    height: 100%;
-    background: rgb(0, 158, 206);
-    background: linear-gradient(31deg,rgb(12, 111, 141)0%,rgb(32, 112, 45)35%,rgb(24, 99, 42)50%,rgb(34, 169, 179)100%); 
-    font-family: Roboto, Arial, sans-serif;
-}
-  .login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-family: Roboto, Arial, sans-serif; }
-    .login__content {
-      width: 100%;
-    font-family: Roboto, Arial, sans-serif; }
-    .login__title {
-      width: 100%;
-      text-align: center;
-      color: #ffffff;
-      font-weight: 1000000;
-      font-size: 5.4rem;
-      margin-bottom: 10px;
-      padding: 0px;
-      font-family: Roboto, Arial, sans-serif;}
-    .login__text {
-      width: 70%;
-      font-size: 2.0rem;
-      text-align: center;
-      color: #fff;
-      margin: 0 auto 40px auto;
-      line-height: 1.5; 
-      font-family: Roboto, Arial, sans-serif;}
+
+html, body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  font-size: 62.5%;
+  background: linear-gradient(31deg, rgb(12, 111, 141)0%, rgb(32, 112, 45)35%, rgb(24, 99, 42)50%, rgb(34, 169, 179)100%);
   
-  .login-form {
-    width: 70%;
-    margin: auto; }
-    .login-form__row {
-      width: 100%;
-      margin-bottom: 10px; 
-      font-family: Roboto, Arial, sans-serif;}
-    .login-form__label {
-      width: 100%;
-      display: block;
-      padding-bottom: 10px;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      font-weight: 700; 
-      font-family: Roboto, Arial, sans-serif;}
-    .login-form label.error {
-      color: #ffffff;
-      padding: 10px 0 0 5px;
-      font-size: 1.1rem;
-      font-family: Roboto, Arial, sans-serif; }
-    .login-form__input {
-      width: calc(100% - 20px);
-      border: none;
-      background-color: #7cb861;
-      padding: 15px 10px;
-      border-radius: 10px;
-      color: #fff; 
-      font-family: Roboto, Arial, sans-serif;
-      box-shadow: 0px 0px 8px rgba(39, 32, 65, 0.7) inset;
-    }
-      
-    .login-form__submit {
-      margin-top: 20px;
-      box-shadow: none;
-      -webkit-box-shadow: none;
-      -webkit-appearance: none; 
-      font-family: Roboto, Arial, sans-serif;}
-    .login-form__forgot-pass {
-      width: 100%;
-      text-align: center;
-      font-family: Roboto, Arial, sans-serif; }
-      .login-form__forgot-pass a {
-        color: #fff;
-        font-weight: 700; 
-        font-family: Roboto, Arial, sans-serif;}
-    .login-form__bottom {
-      width: 100%;
-      text-align: center;
-      margin-top: 20px;
-      font-family: Roboto, Arial, sans-serif; }
-      .login-form__bottom p {
-        color: #fff;
-        padding-bottom: 10px; 
-        font-family: Roboto, Arial, sans-serif;}
+}
 
-        .button {
-            display: inline-block;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            padding: 20px 40px;
-            border-radius: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer; 
-            font-family: Roboto, Arial, sans-serif;}
-            
-            .button--full {
-              width: 100%;
-              text-align: center;
-              padding: 20px 0; }
-            .button--main {
-              background-color: #0c1b22 !important;
-              background: linear-gradient(60deg, #2bc538 0%, #0fb89b 100%) !important;
-              color: rgb(255, 255, 255); 
-              box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.5);
-            }
-            .button--blue {
-              background-color: #4caf72;
-              color: #fff; 
-              box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.8);
-            }
-            .button--disabled {
-              background-color: #292467;
-              color: #509178;
-              opacity: 0.5;
-              cursor: default !important; }
+.page--login {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: rgb(0, 158, 206);
+  background: linear-gradient(31deg, rgb(12, 111, 141)0%, rgb(32, 112, 45)35%, rgb(24, 99, 42)50%, rgb(34, 169, 179)100%);
+  font-family: Roboto, Arial, sans-serif;
+}
 
-              html, body {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    font-size: 62.5%;
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login__content {
+  width: 100%;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login__title {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 1000000;
+  font-size: 5.4rem;
+  margin-bottom: 10px;
+  padding: 0px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login__text {
+  width: 70%;
+  font-size: 2.0rem;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto 40px auto;
+  line-height: 1.5;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form {
+  width: 70%;
+  margin: auto;
+}
+
+.login-form__row {
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__label {
+  width: 100%;
+  display: block;
+  padding-bottom: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form label.error {
+  color: #ffffff;
+  padding: 10px 0 0 5px;
+  font-size: 1.1rem;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__input {
+  width: calc(100% - 20px);
+  border: none;
+  background-color: #7cb861;
+  padding: 15px 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: Roboto, Arial, sans-serif;
+  box-shadow: 0px 0px 8px rgba(39, 32, 65, 0.7) inset;
+}
+
+.login-form__submit {
+  margin-top: 20px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -webkit-appearance: none;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__forgot-pass {
+  width: 100%;
+  text-align: center;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__forgot-pass a {
+  color: #fff;
+  font-weight: 700;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.login-form__bottom p {
+  color: #fff;
+  padding-bottom: 10px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.button {
+  display: inline-block;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  padding: 20px 40px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.button--full {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.button--main {
+  background-color: #0c1b22 !important;
+  background: linear-gradient(60deg, #2bc538 0%, #0fb89b 100%) !important;
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.5);
+}
+
+.button--blue {
+  background-color: #4caf72;
+  color: #fff;
+  box-shadow: 0px 0px 5px rgba(53, 43, 77, 0.8);
+}
+
+.button--disabled {
+  background-color: #292467;
+  color: #509178;
+  opacity: 0.5;
+  cursor: default !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
-    padding: 0 0 20px 0;
-    margin: 0;
-    color: #fff; }
-    
-h1 {font-size: 1.8rem; 
-}
-      
-h2 {font-size: 1.8rem;
+  font-weight: 500;
+  padding: 0 0 20px 0;
+  margin: 0;
+  color: #fff;
 }
 
-h2.page__title {position: relative;
-    padding: 0 0 5px 0;
-    margin: 0 0 15px 0; 
+h1 {
+  font-size: 1.8rem;
 }
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h2.page__title {
+  position: relative;
+  padding: 0 0 5px 0;
+  margin: 0 0 15px 0;
+}
+
 h2.page__title:after {
-    content: '';
-    width: 40px;
-    height: 1px;
-    background-color: #53539a;
-    position: absolute;
-    left: 0px;
-    bottom: 0;
-    z-index: 444; 
+  content: '';
+  width: 40px;
+  height: 1px;
+  background-color: #53539a;
+  position: absolute;
+  left: 0px;
+  bottom: 0;
+  z-index: 444;
 }
-      
-h3 {font-size: 1.6rem; }
-      
-h4 {font-size: 1.4rem; }
-      
-h5 {font-size: 1.2rem; }
-      
-h6 {font-size: 1.1rem; }
-                    
-  
-  
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1.1rem;
+}
