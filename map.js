@@ -16,16 +16,13 @@ function initMap() {
     calculateDistance();
   };
   document.getElementById("submit").addEventListener("click", onChangeHandler);
-
+  document.getElementById("play").addEventListener("click", function(){window.open("game.html")});
   const card = document.getElementById("pac-card");
   var start = document.getElementById("start");
   var end = document.getElementById("end");
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
   new google.maps.places.Autocomplete(start);
   new google.maps.places.Autocomplete(end);
-
-
-
 
 }
 
