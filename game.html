@@ -51,10 +51,23 @@
 	var bubbleoffsetleft = canvas.width/3;
 	
 	var bubbles = [];
+	
+	const list = ["green", "red", "yellow"];
+	
 	for(var i = 0; i<bubblecolumns; i++){
 		bubbles[i] = [];
 		for(var j =0; j<bubblerows; j++){
-			bubbles[i][j] = { x:0, y:0, status:1, color:"green"};
+			const shuffled = list.sort(() => Math.random() - 0.5)
+			if(shuffled[0] == "green"){
+				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"O2"};
+			}
+			else if(shuffled[0] == "red"){
+				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"CO2"};
+			}
+			else if(shuffled[0] == "yellow"){
+				bubbles[i][j] = { x:0, y:0, status:1, color:shuffled[0], text:"SO2"};
+			}
+			
 		}
 		
 	}
@@ -67,9 +80,16 @@
 					bubbles[i][j].x = bubbleX;
 					bubbles[i][j].y = bubbleY;
 					ctx.beginPath();
-					ctx.arc(bubbleX, bubbleY, 20, 0, Math.PI*2, false);
 					ctx.fillStyle = bubbles[i][j].color;
+					ctx.arc(bubbleX, bubbleY, 20, 0, Math.PI*2, false);
 					ctx.fill();
+					
+					ctx = canvas.getContext("2d");
+					ctx.font = '8pt Calibri';
+					ctx.fillStyle = 'black';
+					ctx.textAlign = 'center';
+					ctx.fillText(bubbles[i][j].text, bubbleX, bubbleY+5);
+					//ctx.fillText("Hello",bubbleX,bubbleY);
 					ctx.closePath();
 				}
 				
