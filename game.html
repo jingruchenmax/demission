@@ -5,17 +5,25 @@
     <title>Gamedev Canvas Workshop</title>
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto; }
+    	canvas {  
+			     background-color: rgb(168, 235, 179);
+				 display: block; 
+				 margin: 0 auto; 
+				 border-bottom-left-radius: 20px; 
+				 border-bottom-right-radius: 20px; 
+				 box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7) inset;
+				}
     </style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="myCanvas" width="800" height="480" ></canvas>
+<canvas id="myCanvas" width="800" height="840" ></canvas>
 
 <script>
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
-	canvas.style.background = "#5c94fc";
+	//canvas.style.background = "#5c94fc";//
 	//ctx.fillStyle = "#5c94fc";
 	//ctx.fillRect(0,0,canvas.width,canvas.height);
 	
@@ -174,7 +182,7 @@
 			ctx.moveTo(xtop, ytop);
 			ctx.lineTo(xleft, yleft);
 			ctx.lineTo(xright, yright);
-			ctx.fillStyle = "#FFC0CB";
+			ctx.fillStyle = "#457a7a";
 			ctx.fill();
 				
 	}
@@ -241,7 +249,7 @@
 	if(fire){
 		ctx.beginPath();
 		ctx.rect(x,y-40,3,15);
-		ctx.fillStyle = "#FFC0CB";
+		ctx.fillStyle = "#FFFFFF";
 		ctx.fill();
 		ctx.closePath();
 	
@@ -286,7 +294,8 @@
 
 </script>
 <br /><br />
-<div style="font-size:8pt; padding-right:20px" align="center"> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+
+<div style="font-size:11pt; font-style:oblique; color: rgb(168, 235, 179); padding-right:20px" align="center"> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
 
 </body>
 </html>

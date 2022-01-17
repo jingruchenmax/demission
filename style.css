@@ -2,12 +2,16 @@
        * element that contains the map. */
 
 /* Optional: Makes the sample page fill the window. */
+
+
+
 html, body {
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
+  background: linear-gradient(31deg, rgb(12, 111, 141)0%, rgb(32, 112, 45)35%, rgb(24, 99, 42)50%, rgb(34, 169, 179)100%);
 }
 
 #description {
@@ -16,6 +20,9 @@ html, body {
   font-weight: 300;
 }
 
+.canvas {
+  background-color: #439177;
+}
 
 .pac-card {
   background-color: #fff;
@@ -174,3 +181,4 @@ hr {
   animation-name: fadeIn;
   opacity: 1;
 }
+
